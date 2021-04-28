@@ -1,1 +1,1 @@
-in this repositary i am saving the code related to web scrapping
+in this repositary i am saving the python code related to web scrapping
