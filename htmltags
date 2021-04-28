@@ -1,0 +1,23 @@
+#web scraping program for html tags in weschool website.
+import os
+import requests
+from bs4 import BeautifulSoup
+os.chdir(r'C:\\Users\admin\\OneDrive\\web scraping')
+
+res = requests.get('https://www.w3schools.com/tags/default.asp')
+soup = BeautifulSoup(res.content,'lxml')
+tag = soup.table.find_all('tr')
+tag = tag[1:]
+count = 1
+for i in tag:
+    t = i.find_all('td') #list td tags in tr
+    t1 = t[0].a
+    t1 = t1.contents
+    #print(t1[0])
+    t2 = t[1].contents
+    #print(t2[0])
+    text = f'{count}){t1[0]}:{t2[0]}\n'
+    print(text)
+    count+=1
+    with open('htmltags.txt','a') as fh:
+        fh.writelines(text)
